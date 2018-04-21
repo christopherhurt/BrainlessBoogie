@@ -6,7 +6,7 @@ import menus.HelpMenu;
 import menus.HighScoreMenu;
 import menus.MainMenu;
 import menus.OptionsMenu;
-
+import menus.PlayMenu;
 import objects.Gun;
 import objects.NotesBar;
 import objects.NotesPanel;
@@ -28,6 +28,12 @@ public class Runner {
         
         MainMenu mainMenu = new MainMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"));
+        
+        PlayMenu playMenu = new PlayMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
