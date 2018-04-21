@@ -6,9 +6,9 @@ import main.Menu;
 import main.MenuLabel;
 import main.Texture;
 
-public class HelpMenu {
-
-private Menu helpMenu;
+public class ControlsMenu {
+    
+private Menu controlsMenu;
 
 private static final float HOME_X = .025f;
 private static final float HOME_Y = .875f;
@@ -25,8 +25,8 @@ private static final float GAME_INSTRUCTIONS_Y = .875f;
 private static final float GAME_INSTRUCTIONS_HEIGHT = .1f;    
 private static final float GAME_INSTRUCTIONS_WIDTH = GAME_INSTRUCTIONS_HEIGHT * 3 / 4;
 
-private static final float INSTRUCTION_LABEL_X = Game.getWindowSize().width/10 + .05f;
-private static final float INSTRUCTION_LABEL_Y = .125f;
+private static final float CONTROLS_LABEL_X = Game.getWindowSize().width + .3f;
+private static final float CONTROLS_LABEL_Y = .125f;
 
 private static Texture homeUnhovered;
 private static Texture homeHovered;
@@ -39,28 +39,28 @@ private static Texture controlsClicked;
 private static Texture gameInstructionsUnhovered;
 private static Texture gameInstructionsHovered;
 private static Texture gameInstructionsClicked;
+
     
-    public HelpMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, 
+    public ControlsMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, 
         Texture controlsUnhovered, Texture controlsHovered, Texture controlsClicked,
         Texture gameInstructionsUnhovered, Texture gameInstructionsHovered, Texture gameInstructionsClicked) {
         
-        HelpMenu.homeUnhovered = homeUnhovered;
-        HelpMenu.homeHovered = homeHovered;
-        HelpMenu.homeClicked = homeClicked;
+        ControlsMenu.homeUnhovered = homeUnhovered;
+        ControlsMenu.homeHovered = homeHovered;
+        ControlsMenu.homeClicked = homeClicked;
         
-        HelpMenu.controlsUnhovered = controlsUnhovered;
-        HelpMenu.controlsHovered = controlsHovered;
-        HelpMenu.controlsClicked = controlsClicked;
+        ControlsMenu.controlsUnhovered = controlsUnhovered;
+        ControlsMenu.controlsHovered = controlsHovered;
+        ControlsMenu.controlsClicked = controlsClicked;
         
-        HelpMenu.gameInstructionsUnhovered = gameInstructionsUnhovered;
-        HelpMenu.gameInstructionsHovered = gameInstructionsHovered;
-        HelpMenu.gameInstructionsClicked = gameInstructionsClicked; 
+        ControlsMenu.gameInstructionsUnhovered = gameInstructionsUnhovered;
+        ControlsMenu.gameInstructionsHovered = gameInstructionsHovered;
+        ControlsMenu.gameInstructionsClicked = gameInstructionsClicked;
         
-        
-        Game.createScene("help");
-        helpMenu = new Menu("help");
+        Game.createScene("controls");
+        controlsMenu = new Menu("controls");
         constructMenu();
-        Game.attachMenuToScene("help", helpMenu);
+        Game.attachMenuToScene("controls", controlsMenu);
     }
     
     public void constructMenu() {
@@ -68,12 +68,13 @@ private static Texture gameInstructionsClicked;
         HomeButton homeButton = new HomeButton(HOME_X, HOME_Y, HOME_WIDTH, HOME_HEIGHT, homeUnhovered, homeHovered, homeClicked, "home");
         ControlsButton controlsButton = new ControlsButton(CONTROLS_X, CONTROLS_Y, CONTROLS_WIDTH, CONTROLS_HEIGHT, controlsUnhovered, controlsHovered, controlsClicked, "controls");
         HelpButton gameInstructionsButton = new HelpButton(GAME_INSTRUCTIONS_X, GAME_INSTRUCTIONS_Y, GAME_INSTRUCTIONS_WIDTH, GAME_INSTRUCTIONS_HEIGHT, gameInstructionsUnhovered, gameInstructionsHovered, gameInstructionsClicked, "help");
-        MenuLabel gameInstructionsLabel = new MenuLabel("Game Instructions", "Sans Serif", 1, 0.1f, Color.BLACK, INSTRUCTION_LABEL_X, INSTRUCTION_LABEL_Y, "instructions");
+        MenuLabel controlsLabel = new MenuLabel("Controls", "Sans Serif", 1, 0.1f, Color.BLACK, CONTROLS_LABEL_X, CONTROLS_LABEL_Y, "instructions");
         
-        helpMenu.addButton(homeButton);
-        helpMenu.addButton(controlsButton);
-        helpMenu.addButton(gameInstructionsButton);
-        helpMenu.addLabel(gameInstructionsLabel);
+        controlsMenu.addButton(homeButton);
+        controlsMenu.addButton(controlsButton);
+        controlsMenu.addButton(gameInstructionsButton);
+        controlsMenu.addLabel(controlsLabel);
+        
     }
-    
+
 }

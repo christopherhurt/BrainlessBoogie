@@ -36,8 +36,10 @@ private static Texture optionsUnhovered;
 private static Texture optionsHovered;
 private static Texture optionsClicked;
     
-    public PlayMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, Texture playUnhovered, Texture playHovered, Texture playClicked, Texture highScoreUnhovered, Texture highScoreHovered, Texture highScoreClicked, Texture optionsUnhovered, Texture optionsHovered, 
-        Texture optionsClicked) {
+    public PlayMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, 
+        Texture playUnhovered, Texture playHovered, Texture playClicked, 
+        Texture highScoreUnhovered, Texture highScoreHovered, Texture highScoreClicked, 
+        Texture optionsUnhovered, Texture optionsHovered, Texture optionsClicked) {
         
         PlayMenu.homeUnhovered = homeUnhovered;
         PlayMenu.homeHovered = homeHovered;
