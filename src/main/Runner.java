@@ -7,6 +7,7 @@ import menus.HighScoreMenu;
 import menus.MainMenu;
 import menus.OptionsMenu;
 import menus.PlayMenu;
+import menus.Settings;
 import objects.Gun;
 import objects.NotesBar;
 import objects.NotesPanel;
@@ -17,6 +18,8 @@ public class Runner {
     
     public static void main(String[] args) {
 
+        Settings settings = new Settings();
+        
         Game.createScene("menu");
         
         HelpMenu helpMenu = new HelpMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
@@ -24,7 +27,7 @@ public class Runner {
         HighScoreMenu highScoreMenu = new HighScoreMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"));
         OptionsMenu optionsMenu = new OptionsMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
-            new Texture("textures/golden_fedora.png"));
+            new Texture("textures/golden_fedora.png"), new Texture("textures/golden_fedora.png"));
         
         MainMenu mainMenu = new MainMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
@@ -43,7 +46,7 @@ public class Runner {
         
         Game.start(600, 600, "menu", null, 60, Color.blue);
 
-        Game.createScene("game");
+        /*Game.createScene("game");
         
         Zombie zombie = new Zombie(0.1f, 0.1f, "zombie", Color.blue);
         NotesPanel panel = new NotesPanel("panel", Color.DARK_GRAY);
@@ -55,7 +58,8 @@ public class Runner {
         Game.addObjectToScene("game", bar);
         Game.addObjectToScene("game", gun);
         
-        Game.start(1600, 1600, "Our dank game", null, 60, Color.gray);
+        Game.start(1600, 1600, "Our dank game", null, 60, Color.gray);*/
+        
 
     }
     

@@ -21,8 +21,6 @@ private static final float BUTTON_SEPARATION = .125f;
 private static final float PLAY_BUTTON_Y = .4f - BUTTON_HEIGHT * 3 / 4; 
 private static final float HIGH_SCORE_BUTTON_Y = PLAY_BUTTON_Y + BUTTON_SEPARATION;
 private static final float OPTIONS_BUTTON_Y = HIGH_SCORE_BUTTON_Y + BUTTON_SEPARATION;
-private static final float HELP_BUTTON_Y = OPTIONS_BUTTON_Y + BUTTON_SEPARATION;
-private static final float QUIT_BUTTON_Y = HELP_BUTTON_Y + BUTTON_SEPARATION;
 
 private static Texture homeUnhovered;
 private static Texture homeHovered;
