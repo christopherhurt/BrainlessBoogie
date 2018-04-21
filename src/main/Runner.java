@@ -1,7 +1,7 @@
 package main;
 
 import java.awt.Color;
-
+import menus.ControlsMenu;
 import menus.HelpMenu;
 import menus.HighScoreMenu;
 import menus.MainMenu;
@@ -20,6 +20,8 @@ public class Runner {
         Game.createScene("menu");
         
         HelpMenu helpMenu = new HelpMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"));
         HighScoreMenu highScoreMenu = new HighScoreMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"));
@@ -35,6 +37,11 @@ public class Runner {
         
         PlayMenu playMenu = new PlayMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
+            new Texture("textures/golden_fedora.png"));
+        
+        ControlsMenu controlsMenu = new ControlsMenu(new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), 
             new Texture("textures/golden_fedora.png"));
