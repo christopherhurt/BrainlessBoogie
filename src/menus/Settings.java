@@ -2,14 +2,15 @@ package menus;
 
 import java.util.ArrayList;
 import java.util.List;
+import main.Game;
 import main.SaveFile;
 
 public class Settings {
     
-    private static final SaveFile optionsSettings = new SaveFile("/data/settings.zmb");
-    private static final SaveFile highScoreSong1Settings = new SaveFile("/data/highScoresSong1.zmb");
-    private static final SaveFile highScoreSong2Settings = new SaveFile("/data/highScoresSong2.zmb");
-    private static final SaveFile highScoreSong3Settings = new SaveFile("/data/highScoresSong3.zmb");
+    private static final SaveFile optionsSettings = new SaveFile("/res/data/settings.zmb");
+    private static final SaveFile highScoreSong1Settings = new SaveFile("/res/data/highScoresSong1.zmb");
+    private static final SaveFile highScoreSong2Settings = new SaveFile("/res/data/highScoresSong2.zmb");
+    private static final SaveFile highScoreSong3Settings = new SaveFile("/res/data/highScoresSong3.zmb");
     
     private static float musicVolume = 0;
     private static float sfxVolume = 0;
@@ -29,7 +30,7 @@ public class Settings {
         windowWidth = Integer.parseInt(options.get(2));
     }
     
-    public static void writeOptions(){        
+    public static void writeSettings(){        
         
         List<String> settings = new ArrayList<String>(); // music volume 1st line, sfx 2nd, windowwidth 3rd
         settings.add(String.valueOf(musicVolume));
@@ -84,6 +85,7 @@ public class Settings {
     
     public static void setMusicVolume(float volume){
         musicVolume = volume;
+        writeSettings();
     }
     
     public static float getSFXVolume(){
@@ -92,6 +94,7 @@ public class Settings {
     
     public static void setSFXVolume(float volume){
         sfxVolume = volume;
+        writeSettings();
     }
     
     public static int getWindowWidth(){
@@ -100,120 +103,103 @@ public class Settings {
     
     public static void setWindowWidth(int width){
         windowWidth = width;
+        Game.setWindowSize(windowWidth, windowWidth);
+        writeSettings();
     }
     
     public static int[] getHighScoresSong1(){
         return highScoresSong1;
     }
     
-    public static void setHighScoreSong1(int score){
-        int newPos = 0;
+    public static void setHighScoreSong1(int score, float percent){
         for (int i = 0; i < 5; i++) {
             if (score > highScoresSong1[i]) {
-                newPos = i;
-                i++;
-                while (i < 5) {
-                    highScoresSong1[i] = highScoresSong1[i - 1];
-                    i++;
+                float[] equalScorePercent = new float[5];
+                boolean isFirstIndex = true;
+                int firstIndex = 5;
+                int index = 1;
+                for (int j = 4; j > i; j--) {               
+                    
+                    highScoresSong1[j] = highScoresSong1[j - 1];              
+                    highPercentagesSong1[j] = highPercentagesSong1[j - 1];
+                    
+                    if (highScoresSong1[i] == highScoresSong1[j]) {
+                        equalScorePercent[index] = highPercentagesSong1[j];
+                        index++;
+                    }
+                    
+                    if (isFirstIndex) {
+                        isFirstIndex = false;
+                        firstIndex = j;
+                    }
                 }
-                highScoresSong1[newPos] = score;
+                for (int k = 1; k < index; k++) {
+                    if (highPercentagesSong1[i] > equalScorePercent[k]) {
+                        equalScorePercent[k - 1] = equalScorePercent[k];
+                    } else {
+                        equalScorePercent[k - 1] = i;
+                        k = index;
+                    }
+                }
+                
+                for (int l = firstIndex; l > firstIndex - index; l--) {
+                    highPercentagesSong1[1] = equalScorePercent[firstIndex - l];
+                }
+                highScoresSong1[i] = score;
+                i = 5;
             } 
         }
+        writeHighScores();
     }
     
     public static int[] getHighScoresSong2(){
         return highScoresSong2;
     }
     
-    public static void setHighScoreSong2(int index, int score){
-        int newPos = 0;
+    public static void setHighScoreSong2(int score, float percent){
         for (int i = 0; i < 5; i++) {
             if (score > highScoresSong2[i]) {
-                newPos = i;
-                i++;
-                while (i < 5) {
-                    highScoresSong2[i] = highScoresSong2[i - 1];
-                    i++;
+                for (int j = 4; j > i; j--) {
+                    highScoresSong2[j] = highScoresSong2[j - 1];
+                    highPercentagesSong2[j] = highPercentagesSong2[j - 1];
                 }
-                highScoresSong2[newPos] = score;
+                highScoresSong2[i] = score;
+                highPercentagesSong2[i] = percent;
+                i = 5;
             } 
         }
+        writeHighScores();
     }
     
     public static int[] getHighScoresSong3(){
         return highScoresSong3;
     }
     
-    public static void setHighScoreSong3(int index, int score){
-        int newPos = 0;
+    public static void setHighScoreSong3(int score, float percent){
         for (int i = 0; i < 5; i++) {
             if (score > highScoresSong3[i]) {
-                newPos = i;
-                i++;
-                while (i < 5) {
-                    highScoresSong3[i] = highScoresSong3[i - 1];
-                    i++;
+                for (int j = 4; j > i; j--) {
+                    highScoresSong3[j] = highScoresSong3[j - 1];
+                    highPercentagesSong3[j] = highPercentagesSong3[j - 1];
                 }
-                highScoresSong3[newPos] = score;
+                highScoresSong3[i] = score;
+                highPercentagesSong3[i] = percent;
+                i = 5;
             } 
         }
+        writeHighScores();
     }
     
     public static float[] getHighPercentagesSong1(){
         return highPercentagesSong1;
     }
     
-    public static void setHighPercentageSong1(int index, float score){
-        int newPos = 0;
-        for (int i = 0; i < 5; i++) {
-            if (score > highPercentagesSong1[i]) {
-                newPos = i;
-                i++;
-                while (i < 5) {
-                    highPercentagesSong1[i] = highPercentagesSong1[i - 1];
-                    i++;
-                }
-                highPercentagesSong1[newPos] = score;
-            } 
-        }
-    }
-    
     public static float[] getHighPercentagesSong2(){
         return highPercentagesSong2;
     }
     
-    public static void setHighScoreSong2(int index, float score){
-        int newPos = 0;
-        for (int i = 0; i < 5; i++) {
-            if (score > highPercentagesSong2[i]) {
-                newPos = i;
-                i++;
-                while (i < 5) {
-                    highPercentagesSong2[i] = highPercentagesSong2[i - 1];
-                    i++;
-                }
-                highPercentagesSong2[newPos] = score;
-            } 
-        }
-    }
-    
-    public static float[] getHighPerentagesSong3(){
+    public static float[] getHighPercentagesSong3(){
         return highPercentagesSong3;
-    }
-    
-    public static void setHighPercentageSong3(int index, float score){
-        int newPos = 0;
-        for (int i = 0; i < 5; i++) {
-            if (score > highPercentagesSong3[i]) {
-                newPos = i;
-                i++;
-                while (i < 5) {
-                    highPercentagesSong3[i] = highPercentagesSong3[i - 1];
-                    i++;
-                }
-                highPercentagesSong3[newPos] = score;
-            } 
-        }
     }
 
 }

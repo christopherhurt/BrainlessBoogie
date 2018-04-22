@@ -54,10 +54,8 @@ public class VolumeButton extends TexturedMenuButton {
         if(isReleased()){
             if(getID().equals("music")){
                 Settings.setMusicVolume(volume);
-                Settings.writeOptions();;
             }else if(getID().equals("sfx")){
                 Settings.setSFXVolume(volume);
-                Settings.writeOptions();
             }
         }
     }
