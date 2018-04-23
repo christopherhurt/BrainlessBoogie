@@ -11,7 +11,7 @@ private Menu optionsMenu;
 private static final float HOME_X = .025f;
 private static final float HOME_Y = .875f;
 private static final float HOME_HEIGHT = .1f;    
-private static final float HOME_WIDTH = HOME_HEIGHT * 3 / 4;
+private static final float HOME_WIDTH = HOME_HEIGHT;
 
 private static final float VOLUME_Y = .5f;
 private static final float VOLUME_OFFSET = .2f;

@@ -77,6 +77,10 @@ public class Settings {
             scoresSong3.add(String.valueOf(highScoresSong3[i]));
             scoresSong3.add(String.valueOf(highPercentagesSong3[i]));
         }
+        
+        highScoreSong1Settings.writeLines(scoresSong1);
+        highScoreSong2Settings.writeLines(scoresSong2);
+        highScoreSong3Settings.writeLines(scoresSong3);
     }
     
     public static float getMusicVolume(){
@@ -112,42 +116,60 @@ public class Settings {
     }
     
     public static void setHighScoreSong1(int score, float percent){
+        int firstIndex = 5;
+        int index = 1;
+        float[] equalScorePercent = new float[5];
+        float highPercentVal = 0;
         for (int i = 0; i < 5; i++) {
-            if (score > highScoresSong1[i]) {
-                float[] equalScorePercent = new float[5];
+            if (score >= highScoresSong1[i]) {
+                
+                // array that holds percentages for equal scores.  
+                //float[] equalScorePercent = new float[5];
                 boolean isFirstIndex = true;
-                int firstIndex = 5;
-                int index = 1;
+                //int firstIndex = 5;
+                //int index = 1;
+                
                 for (int j = 4; j > i; j--) {               
                     
                     highScoresSong1[j] = highScoresSong1[j - 1];              
                     highPercentagesSong1[j] = highPercentagesSong1[j - 1];
                     
                     if (highScoresSong1[i] == highScoresSong1[j]) {
-                        equalScorePercent[index] = highPercentagesSong1[j];
+                        equalScorePercent[index] = highPercentagesSong1[j]; // add percentage to equalScorePercent if equal score
+                        // percents will be in reverse order (smallest to largest
                         index++;
-                    }
-                    
-                    if (isFirstIndex) {
-                        isFirstIndex = false;
-                        firstIndex = j;
+                        if (isFirstIndex) { // set first index where equals occur
+                            isFirstIndex = false;
+                            firstIndex = j;
+                        }
                     }
                 }
-                for (int k = 1; k < index; k++) {
+                /*for (int k = 1; k < index; k++) {
                     if (highPercentagesSong1[i] > equalScorePercent[k]) {
                         equalScorePercent[k - 1] = equalScorePercent[k];
                     } else {
-                        equalScorePercent[k - 1] = i;
+                        equalScorePercent[k - 1] = highPercentagesSong1[i];
                         k = index;
                     }
                 }
-                
                 for (int l = firstIndex; l > firstIndex - index; l--) {
                     highPercentagesSong1[1] = equalScorePercent[firstIndex - l];
-                }
+                }*/
                 highScoresSong1[i] = score;
+                highPercentVal = highPercentagesSong1[i];
                 i = 5;
             } 
+        }
+        for (int k = 1; k < index; k++) {
+            if (highPercentVal > equalScorePercent[k]) {
+                equalScorePercent[k - 1] = equalScorePercent[k];
+            } else {
+                equalScorePercent[k - 1] = highPercentVal;
+                k = index;
+            }
+        }
+        for (int l = firstIndex; l > firstIndex - index; l--) {
+            highPercentagesSong1[1] = equalScorePercent[firstIndex - l];
         }
         writeHighScores();
     }
