@@ -13,15 +13,6 @@ public class PlayMenu {
     private static final float HOME_HEIGHT = .1f;    
     private static final float HOME_WIDTH = HOME_HEIGHT;
     
-    private static final float BUTTON_X = .055f;
-    private static final float BUTTON_HEIGHT = .1f;    
-    private static final float BUTTON_WIDTH = .35f;
-    
-    private static final float BUTTON_SEPARATION = .125f;
-    private static final float SONG1_BUTTON_Y = .4f - BUTTON_HEIGHT * 3 / 4; 
-    private static final float SONG2_BUTTON_Y = SONG1_BUTTON_Y + BUTTON_SEPARATION;
-    private static final float SONG3_BUTTON_Y = SONG2_BUTTON_Y + BUTTON_SEPARATION;
-    
     private static Texture homeUnhovered;
     private static Texture homeHovered;
     private static Texture homeClicked;
@@ -64,16 +55,21 @@ public class PlayMenu {
     public void constructMenu() {
         
         HomeButton homeButton = new HomeButton(HOME_X, HOME_Y, HOME_WIDTH, HOME_HEIGHT, homeUnhovered, homeHovered, homeClicked, "home");
-        Song1Button song1Button = new Song1Button(BUTTON_X, SONG1_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, song1Unhovered, song1Hovered, song1Clicked, "song1");
-        Song2Button song2Button = new Song2Button(BUTTON_X, SONG2_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, song2Unhovered, song2Hovered, song2Clicked, "song2");
-        Song3Button song3Button = new Song3Button(BUTTON_X, SONG3_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, song3Unhovered, song3Hovered, song3Clicked, "song3");
         
+        float songHeight = 0.1f;
+        float distanceBetweenSongs = 0.05f;
+        float song1Y = 0.5f - 1.5f * songHeight - distanceBetweenSongs;
+        float songWidth = songHeight * 141f / 25f;
+        float songX = 0.055f;
+        
+        Song1Button song1Button = new Song1Button(songX, song1Y, songWidth, songHeight, song1Unhovered, song1Hovered, song1Clicked, "song1");
+        Song2Button song2Button = new Song2Button(songX, song1Y + songHeight + distanceBetweenSongs, songWidth, songHeight, song2Unhovered, song2Hovered, song2Clicked, "song2");
+        Song3Button song3Button = new Song3Button(songX, song1Y + 2 * songHeight + 2 * distanceBetweenSongs, songWidth, songHeight, song3Unhovered, song3Hovered, song3Clicked, "song3");
         
         playMenu.addButton(homeButton);
         playMenu.addButton(song1Button);
         playMenu.addButton(song2Button);
         playMenu.addButton(song3Button);
-        
     }
 
 }

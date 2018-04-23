@@ -12,19 +12,20 @@ public class Zombie extends AnimatedGameObject {
     
     public static final float ZOMBIE_WIDTH = 0.1f;
     public static final float ZOMBIE_HEIGHT = 0.1f;
+    public static final float ANIM_LENGTH = 0.7f;
     
-    private static final float ZOMBIE_SPEED = 0.002f;
-    private static final float ANIM_LENGTH = 0.7f;
-    private static final float RELATIVE_HEAD_SIZE = 0.3f;
-    
-    private static final Texture[] RIGHT_TEXTURES = {
+    public static final Texture[] RIGHT_TEXTURES = {
         Utils.ZOMBIE_SHEET.getTexture(0, 0), Utils.ZOMBIE_SHEET.getTexture(1, 0), Utils.ZOMBIE_SHEET.getTexture(2, 0),
         Utils.ZOMBIE_SHEET.getTexture(3, 0), Utils.ZOMBIE_SHEET.getTexture(4, 0), Utils.ZOMBIE_SHEET.getTexture(5, 0)
     };
-    private static final Texture[] LEFT_TEXTURES = {
+    public static final Texture[] LEFT_TEXTURES = {
         Utils.ZOMBIE_SHEET.getTexture(0, 1), Utils.ZOMBIE_SHEET.getTexture(1, 1), Utils.ZOMBIE_SHEET.getTexture(2, 1),
         Utils.ZOMBIE_SHEET.getTexture(3, 1), Utils.ZOMBIE_SHEET.getTexture(4, 1), Utils.ZOMBIE_SHEET.getTexture(5, 1)
     };
+    
+    private static final float ZOMBIE_SPEED = 0.002f;
+    private static final float RELATIVE_HEAD_SIZE = 0.3f;
+    
     private static final Texture[] DOWN_TEXTURES = {
         Utils.ZOMBIE_SHEET.getTexture(0, 2), Utils.ZOMBIE_SHEET.getTexture(1, 2), Utils.ZOMBIE_SHEET.getTexture(2, 2),
         Utils.ZOMBIE_SHEET.getTexture(3, 2), Utils.ZOMBIE_SHEET.getTexture(4, 2), Utils.ZOMBIE_SHEET.getTexture(5, 2)

@@ -5,6 +5,7 @@ import main.SoundBank;
 import main.Texture;
 import main.TexturedMenuButton;
 import main.Utils;
+import menus.ZombieSpawner;
 
 public class EndHomeButton extends TexturedMenuButton {
     
@@ -31,6 +32,7 @@ public class EndHomeButton extends TexturedMenuButton {
             Utils.MOUSE_CLICK_SOUND.play();
             Utils.MENU_MUSIC.play();
             Game.setCurrentScene("main menu");
+            ZombieSpawner.clearZombies();
         }
     }
     

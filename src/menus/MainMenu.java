@@ -3,6 +3,7 @@ package menus;
 import main.Game;
 import main.Menu;
 import main.Texture;
+import main.TexturedGameObject;
 
 
 public class MainMenu {
@@ -81,7 +82,14 @@ public class MainMenu {
         mainMenu.addButton(helpButton);
         mainMenu.addButton(quitButton);
         
+        float bannerHeight = 0.2f;
+        float bannerY = 0.063f;
+        float bannerWidth = bannerHeight * 116f / 29f;
+        float bannerX = 0.5f - 0.5f * bannerWidth;
         
+        TexturedGameObject banner = new TexturedGameObject(bannerX, bannerY, 0, 0, 0, 0, bannerWidth, bannerHeight, "mainMenuBanner", new Texture("textures/brainlessBoogie.png"));
+        
+        Game.addObjectToScene("main menu", banner);
     }
 
 }

@@ -16,14 +16,6 @@ public class OptionsMenu {
     private static final float VOLUME_HEIGHT = .1f;
     private static final float VOLUME_WIDTH = VOLUME_HEIGHT * 4f / 14f;
     
-    private static final float WINDOW_BUTTON_WIDTH = .1f;
-    private static final float WINDOW_BUTTON_HEIGHT = .05f;
-    private static final float WINDOW_BUTTON_Y = .75f;
-    private static final float WINDOW_BUTTON_OFFSET = .1f;
-    private static final float WINDOW_BUTTON1_X = .2f;
-    private static final float WINDOW_BUTTON2_X = WINDOW_BUTTON1_X + WINDOW_BUTTON_OFFSET;
-    private static final float WINDOW_BUTTON3_X = WINDOW_BUTTON2_X + WINDOW_BUTTON_OFFSET;
-    private static final float WINDOW_BUTTON4_X = WINDOW_BUTTON3_X + WINDOW_BUTTON_OFFSET;
     private static final int WINDOW_BUTTON1_VALUE = 800;
     private static final int WINDOW_BUTTON2_VALUE = 1200;
     private static final int WINDOW_BUTTON3_VALUE = 1600;
@@ -105,13 +97,23 @@ public class OptionsMenu {
         
         VolumeButton sfxButton = new VolumeButton(sfxScale, VOLUME_WIDTH, VOLUME_HEIGHT, volumeTextureUnhovered, volumeTextureHovered, volumeTextureClicked, "sfx", false);
         VolumeButton musicButton = new VolumeButton(musicScale, VOLUME_WIDTH, VOLUME_HEIGHT, volumeTextureUnhovered, volumeTextureHovered, volumeTextureClicked, "music", true);
-        WindowSizeButton windowButton1 = new WindowSizeButton(WINDOW_BUTTON1_X, WINDOW_BUTTON_Y, WINDOW_BUTTON_WIDTH, WINDOW_BUTTON_HEIGHT, 
+        
+        float windowButtonHeight = 0.045f;
+        float windowButtonWidth = windowButtonHeight * 115f / 25f;
+        float spaceBetweenButtons = 0.03f;
+        float windowButtonY = 0.7f;
+        float windowButton1X = 0.5f - 1.5f * spaceBetweenButtons - 2 * windowButtonWidth;
+        float windowButton2X = 0.5f - 0.5f * spaceBetweenButtons - windowButtonWidth;
+        float windowButton3X = 0.5f + 0.5f * spaceBetweenButtons;
+        float windowButton4X = 0.5f + 1.5f * spaceBetweenButtons + windowButtonWidth;
+        
+        WindowSizeButton windowButton1 = new WindowSizeButton(windowButton1X, windowButtonY, windowButtonWidth, windowButtonHeight, 
             WINDOW_BUTTON1_VALUE, window1Unhovered, window1Hovered, window1Clicked, "window size 1");
-        WindowSizeButton windowButton2 = new WindowSizeButton(WINDOW_BUTTON2_X, WINDOW_BUTTON_Y, WINDOW_BUTTON_WIDTH, WINDOW_BUTTON_HEIGHT, 
+        WindowSizeButton windowButton2 = new WindowSizeButton(windowButton2X, windowButtonY, windowButtonWidth, windowButtonHeight, 
             WINDOW_BUTTON2_VALUE, window2Unhovered, window2Hovered, window2Clicked, "window size 2");
-        WindowSizeButton windowButton3 = new WindowSizeButton(WINDOW_BUTTON3_X, WINDOW_BUTTON_Y, WINDOW_BUTTON_WIDTH, WINDOW_BUTTON_HEIGHT, 
+        WindowSizeButton windowButton3 = new WindowSizeButton(windowButton3X, windowButtonY, windowButtonWidth, windowButtonHeight, 
             WINDOW_BUTTON3_VALUE, window3Unhovered, window3Hovered, window3Clicked, "window size 3");
-        WindowSizeButton windowButton4 = new WindowSizeButton(WINDOW_BUTTON4_X, WINDOW_BUTTON_Y, WINDOW_BUTTON_WIDTH, WINDOW_BUTTON_HEIGHT, 
+        WindowSizeButton windowButton4 = new WindowSizeButton(windowButton4X, windowButtonY, windowButtonWidth, windowButtonHeight, 
             WINDOW_BUTTON4_VALUE, window4Unhovered, window4Hovered, window4Clicked, "window size 4");
         
         optionsMenu.addButton(homeButton);

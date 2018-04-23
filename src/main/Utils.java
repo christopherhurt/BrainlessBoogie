@@ -52,7 +52,7 @@ public class Utils {
     public static final float MOUSE_CLICK_MULTIPLIER = 1f;
     public static final Sound MOUSE_CLICK_SOUND = genSound("mouseClick", "sounds/mouseClick.wav", false, MOUSE_CLICK_MULTIPLIER);
     
-    public static final float MENU_MULTIPLIER = 1f;
+    public static final float MENU_MULTIPLIER = 0.15f;
     public static final Sound MENU_MUSIC = genSound("menuMusic", "music/ludummenu.wav", true, MENU_MULTIPLIER);
     
     private static int currentSong = 0;
@@ -69,7 +69,6 @@ public class Utils {
         WIN_SOUND.setVolume(WIN_VOLUME_MULTIPLIER * sfxVolume);
         LOSE_SOUND.setVolume(LOSE_VOLUME_MULTIPLIER * sfxVolume);
         MOUSE_CLICK_SOUND.setVolume(MOUSE_CLICK_MULTIPLIER * sfxVolume);
-        MENU_MUSIC.setVolume(MENU_MULTIPLIER * sfxVolume);
     }
     
     public static void constructWinScreen() {
