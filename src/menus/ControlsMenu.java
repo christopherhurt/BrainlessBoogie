@@ -11,19 +11,24 @@ public class ControlsMenu {
 private Menu controlsMenu;
 
 private static final float HOME_X = .025f;
-private static final float HOME_Y = .875f;
-private static final float HOME_HEIGHT = .1f;    
+private static final float HOME_HEIGHT = .07f;  
+private static final float HOME_Y = 1 - HOME_HEIGHT - HOME_X;  
 private static final float HOME_WIDTH = HOME_HEIGHT;
 
-private static final float CONTROLS_X = .2f;
-private static final float CONTROLS_Y = .875f;
-private static final float CONTROLS_HEIGHT = .1f;    
-private static final float CONTROLS_WIDTH = .35f;
+private static final float BUTTON_Y = HOME_Y;
+private static final float BUTTON_HEIGHT = HOME_HEIGHT;    
+private static final float BUTTON_WIDTH = BUTTON_HEIGHT * 141 / 25;
+private static final float BUTTON_SEPERATION = BUTTON_WIDTH * 1.087f;
 
-private static final float GAME_INSTRUCTIONS_X = .6f;
-private static final float GAME_INSTRUCTIONS_Y = CONTROLS_Y;
-private static final float GAME_INSTRUCTIONS_HEIGHT = .1f;    
-private static final float GAME_INSTRUCTIONS_WIDTH = .4f;
+private static final float GAME_INSTRUCTIONS_X = .15f;
+private static final float GAME_INSTRUCTIONS_Y = BUTTON_Y;
+private static final float GAME_INSTRUCTIONS_HEIGHT = BUTTON_HEIGHT;    
+private static final float GAME_INSTRUCTIONS_WIDTH = BUTTON_WIDTH;
+
+private static final float CONTROLS_X = GAME_INSTRUCTIONS_X + BUTTON_SEPERATION;
+private static final float CONTROLS_Y = BUTTON_Y;
+private static final float CONTROLS_HEIGHT = BUTTON_HEIGHT;    
+private static final float CONTROLS_WIDTH =  BUTTON_WIDTH;
 
 private static final float CONTROLS_LABEL_X = Game.getWindowSize().width + .3f;
 private static final float CONTROLS_LABEL_Y = .125f;

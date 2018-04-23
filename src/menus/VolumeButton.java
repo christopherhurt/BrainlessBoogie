@@ -11,10 +11,9 @@ public class VolumeButton extends TexturedMenuButton {
     private float minX;
     private float maxX;
     
-    public VolumeButton(float minX, float maxX, float y, float w, float h, Texture unhoveredTex,
-        Texture hoveredTex, Texture clickedTex, String id) {
+    public VolumeButton(float minX, float maxX, float y, float w, float h, Texture tex, String id) {
         
-        super((maxX + minX) / 2, y, w, h, unhoveredTex, hoveredTex, clickedTex, id);
+        super((maxX + minX) / 2, y, w, h, tex, tex, tex, id);
         
         this.minX = minX;
         this.maxX = maxX;

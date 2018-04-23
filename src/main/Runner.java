@@ -21,7 +21,6 @@ public class Runner {
     
     public static void main(String[] args) {
 
-        Settings settings = new Settings();
         Settings.readSettings();
         Settings.readHighScores();
         Game.createScene("menu");
@@ -42,7 +41,7 @@ public class Runner {
         HighScoreSong3Menu highScoreSong3Menu = new HighScoreSong3Menu(new Texture("textures/backButtU.png"), new Texture("textures/backButtH.png"), 
             new Texture("textures/backButtP.png"));
         OptionsMenu optionsMenu = new OptionsMenu(new Texture("textures/homeButtU.png"), new Texture("textures/homeButtH.png"), 
-            new Texture("textures/homeButtP.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), 
+            new Texture("textures/homeButtP.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), new Texture("textures/deoderant.png"), 
             new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), 
             new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), 
             new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), 

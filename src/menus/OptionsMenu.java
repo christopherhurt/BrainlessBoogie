@@ -38,6 +38,7 @@ private static final int WINDOW_BUTTON3_VALUE = 800;
 private static final int WINDOW_BUTTON4_VALUE = 1000;
 
 private static Texture volumeTexture;
+private static Texture scaleTexture;
 
 private static Texture homeUnhovered;
 private static Texture homeHovered;
@@ -57,7 +58,7 @@ private static Texture window4Hovered;
 private static Texture window4Clicked;
 
     
-    public OptionsMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, Texture volumeTexture, Texture window1Unhovered, 
+    public OptionsMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, Texture volumeTexture, Texture scaleTexture, Texture window1Unhovered, 
         Texture window1Hovered, Texture window1Clicked, Texture window2Unhovered, Texture window2Hovered, Texture window2Clicked,
         Texture window3Unhovered, Texture window3Hovered, Texture window3Clicked, Texture window4Unhovered, Texture window4Hovered, 
         Texture window4Clicked) {
@@ -80,6 +81,7 @@ private static Texture window4Clicked;
         OptionsMenu.window4Clicked = window4Clicked;
         
         OptionsMenu.volumeTexture = volumeTexture;
+        OptionsMenu.scaleTexture = scaleTexture;
         
         Game.createScene("options");
         optionsMenu = new Menu("options");
@@ -90,10 +92,10 @@ private static Texture window4Clicked;
     public void constructMenu() {
         
         HomeButton homeButton = new HomeButton(HOME_X, HOME_Y, HOME_WIDTH, HOME_HEIGHT, homeUnhovered, homeHovered, homeClicked, "home");
-        VolumeButton sfxButton = new VolumeButton(SFX_MINX, SFX_MAXX, VOLUME_Y, VOLUME_WIDTH, VOLUME_HEIGHT, volumeTexture, volumeTexture, 
-            volumeTexture, "sfx");
-        VolumeButton musicButton = new VolumeButton(MUSIC_MINX, MUSIC_MAXX, VOLUME_Y, VOLUME_WIDTH, VOLUME_HEIGHT, volumeTexture, volumeTexture, 
-            volumeTexture, "music");
+        VolumeButton sfxButton = new VolumeButton(SFX_MINX, SFX_MAXX, VOLUME_Y, VOLUME_WIDTH, VOLUME_HEIGHT, volumeTexture, "sfx");
+        VolumeButton musicButton = new VolumeButton(MUSIC_MINX, MUSIC_MAXX, VOLUME_Y, VOLUME_WIDTH, VOLUME_HEIGHT, volumeTexture, "music");
+        VolumeScale sfxScale = new VolumeScale(SFX_MINX, VOLUME_Y, VOLUME_WIDTH, VOLUME_HEIGHT, scaleTexture, "sfx scale");
+        VolumeScale musicScale = new VolumeScale(MUSIC_MINX, VOLUME_Y, VOLUME_WIDTH, VOLUME_HEIGHT, scaleTexture, "music scale");
         WindowSizeButton windowButton1 = new WindowSizeButton(WINDOW_BUTTON1_X, WINDOW_BUTTON_Y, WINDOW_BUTTON_WIDTH, WINDOW_BUTTON_HEIGHT, 
             WINDOW_BUTTON1_VALUE, window1Unhovered, window1Hovered, window1Clicked, "window size 1");
         WindowSizeButton windowButton2 = new WindowSizeButton(WINDOW_BUTTON2_X, WINDOW_BUTTON_Y, WINDOW_BUTTON_WIDTH, WINDOW_BUTTON_HEIGHT, 
@@ -106,6 +108,8 @@ private static Texture window4Clicked;
         optionsMenu.addButton(homeButton);
         optionsMenu.addButton(sfxButton);
         optionsMenu.addButton(musicButton);
+        Game.addObjectToScene("options", sfxScale);
+        Game.addObjectToScene("options", musicScale);
         optionsMenu.addButton(windowButton1);
         optionsMenu.addButton(windowButton2);
         optionsMenu.addButton(windowButton3);

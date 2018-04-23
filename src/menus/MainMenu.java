@@ -12,7 +12,7 @@ public class MainMenu {
     
     private static final float BUTTON_X = .055f;
     private static final float BUTTON_HEIGHT = .1f;    
-    private static final float BUTTON_WIDTH = .35f;
+    private static final float BUTTON_WIDTH = BUTTON_HEIGHT * 115 / 25;
     
     private static final float BUTTON_SEPARATION = .125f;
     private static final float PLAY_BUTTON_Y = .4f - BUTTON_HEIGHT * 3 / 4; 
