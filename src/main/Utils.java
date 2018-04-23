@@ -17,7 +17,9 @@ public class Utils {
     
     public static final int FPS = 60;
     
-    public static final Sound SONG_1_MUSIC = genSound("gameMusic1", "music/ludem1song.wav", false, 1); // TODO: adjust for proper volume settings
+    private static final float SONG_MULTIPLIER = 1f;
+    
+    public static final Sound SONG_1_MUSIC = genSound("gameMusic1", "music/ludem1song.wav", false, 1);
     public static final Sound SONG_2_MUSIC = genSound("gameMusic2", "music/ludem2song.wav", false, 1);
     public static final Sound SONG_3_MUSIC = genSound("gameMusic3", "music/ludem3song.wav", false, 1);
     
@@ -32,7 +34,7 @@ public class Utils {
     
     public static final Cursor GUN_CROSSHAIR = genGunCrosshair();
     
-    public static final float ZOMBIE_DEATH_VOLUME_MULTIPLIER = 0.75f; // TODO: adjust for volume settings
+    public static final float ZOMBIE_DEATH_VOLUME_MULTIPLIER = 0.75f;
     public static final Sound ZOMBIE_DEATH_SOUND = genSound("zombieDeath", "sounds/zombieDeath.wav", false, ZOMBIE_DEATH_VOLUME_MULTIPLIER);
     
     public static final float GUNSHOT_VOLUME_MULTIPLIER = 0.4f;
@@ -54,6 +56,21 @@ public class Utils {
     public static final Sound MENU_MUSIC = genSound("menuMusic", "music/ludummenu.wav", true, MENU_MULTIPLIER);
     
     private static int currentSong = 0;
+    
+    public static void updateVolume(float musicVolume, float sfxVolume) {
+        MENU_MUSIC.setVolume(MENU_MULTIPLIER * musicVolume);
+        SONG_1_MUSIC.setVolume(SONG_MULTIPLIER * musicVolume);
+        SONG_2_MUSIC.setVolume(SONG_MULTIPLIER * musicVolume);
+        SONG_3_MUSIC.setVolume(SONG_MULTIPLIER * musicVolume);
+        
+        ZOMBIE_DEATH_SOUND.setVolume(ZOMBIE_DEATH_VOLUME_MULTIPLIER * sfxVolume);
+        GUNSHOT_SOUND.setVolume(GUNSHOT_VOLUME_MULTIPLIER * sfxVolume);
+        HEADSHOT_SOUND.setVolume(HEADSHOT_VOLUME_MULTIPLIER * sfxVolume);
+        WIN_SOUND.setVolume(WIN_VOLUME_MULTIPLIER * sfxVolume);
+        LOSE_SOUND.setVolume(LOSE_VOLUME_MULTIPLIER * sfxVolume);
+        MOUSE_CLICK_SOUND.setVolume(MOUSE_CLICK_MULTIPLIER * sfxVolume);
+        MENU_MUSIC.setVolume(MENU_MULTIPLIER * sfxVolume);
+    }
     
     public static void constructWinScreen() {
         Game.createScene("win");

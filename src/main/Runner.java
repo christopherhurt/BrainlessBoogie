@@ -18,6 +18,27 @@ public class Runner {
         Settings.readSettings();
         Settings.readHighScores();
         
+        Game.createScene("main menu");
+        Game.createScene("help");
+        Game.createScene("options");
+        Game.createScene("play");
+        Game.createScene("controls");
+        Game.createScene("high score");
+        Game.createScene("high score song 1");
+        Game.createScene("high score song 2");
+        Game.createScene("high score song 3");
+        
+        TexturedGameObject menuBackground = new TexturedGameObject(0, 0, 0, 0, 0, 0, 1, 1, "menuBackground", new Texture("textures/backgroundMainMenu.png"));
+        Game.addObjectToScene("main menu", menuBackground);
+        Game.addObjectToScene("help", menuBackground);
+        Game.addObjectToScene("options", menuBackground);
+        Game.addObjectToScene("play", menuBackground);
+        Game.addObjectToScene("controls", menuBackground);
+        Game.addObjectToScene("high score", menuBackground);
+        Game.addObjectToScene("high score song 1", menuBackground);
+        Game.addObjectToScene("high score song 2", menuBackground);
+        Game.addObjectToScene("high score song 3", menuBackground);
+        
         new HelpMenu(new Texture("textures/homeButtU.png"), new Texture("textures/homeButtH.png"), 
             new Texture("textures/homeButtP.png"), new Texture("textures/controlsButtU.png"), new Texture("textures/controlsButtH.png"), 
             new Texture("textures/controlsButtP.png"), new Texture("textures/instructionsButtU.png"), new Texture("textures/instructionsButtH.png"), 
@@ -35,7 +56,7 @@ public class Runner {
             new Texture("textures/backButtP.png"));
         
         new OptionsMenu(new Texture("textures/homeButtU.png"), new Texture("textures/homeButtH.png"), 
-            new Texture("textures/homeButtP.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"),
+            new Texture("textures/homeButtP.png"), new Texture("textures/slider.png"), new Texture("textures/sliderH.png"), new Texture("textures/sliderP.png"), new Texture("textures/sliderBar.png"),
             new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"),
             new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"),
             new Texture("textures/deoderant.png"), new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"),
@@ -63,6 +84,7 @@ public class Runner {
         
         Utils.constructWinScreen();
         Utils.constructLoseScreen();
+        Utils.updateVolume(Settings.getMusicVolume(), Settings.getSFXVolume());
         Game.createScene("game");
         
         Utils.MENU_MUSIC.play();

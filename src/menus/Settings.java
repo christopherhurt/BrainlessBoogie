@@ -23,8 +23,7 @@ public class Settings {
     private static float[] highPercentagesSong3 = new float[5];
     
     public static void readSettings(){
-
-        List<String> options = optionsSettings.readLines();             
+        List<String> options = optionsSettings.readLines();
         musicVolume = Float.parseFloat(options.get(0));
         sfxVolume = Float.parseFloat(options.get(1));
         windowWidth = Integer.parseInt(options.get(2));
@@ -41,8 +40,6 @@ public class Settings {
     }
     
     public static void readHighScores(){
-        
-        
         List<String> scoresSong1 = highScoreSong1Settings.readLines(); // even lines score, odd percentage
         List<String> scoresSong2 = highScoreSong2Settings.readLines();
         List<String> scoresSong3 = highScoreSong3Settings.readLines();

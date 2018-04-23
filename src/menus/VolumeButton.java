@@ -1,61 +1,85 @@
 package menus;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import main.Game;
-import main.SoundBank;
 import main.Texture;
 import main.TexturedMenuButton;
+import main.Utils;
 
 public class VolumeButton extends TexturedMenuButton {
     
     private float minX;
     private float maxX;
+    private boolean musicSlider;
+    private float lockedOffset;
     
-    public VolumeButton(float minX, float maxX, float y, float w, float h, Texture tex, String id) {
+    public VolumeButton(VolumeScale slider, float w, float h, Texture unhoveredTex, Texture hoveredTex, Texture clickedTex, String id, boolean musicSlider) {
+        super(0, slider.getY() + (slider.getHeight() - h) / 2, w, h, unhoveredTex, hoveredTex, clickedTex, id);
         
-        super((maxX + minX) / 2, y, w, h, tex, tex, tex, id);
+        float sliderOffset = slider.getWidth() * 4f / 100f - 0.001f;
         
-        this.minX = minX;
-        this.maxX = maxX;
+        minX = slider.getX() + sliderOffset;
+        maxX = slider.getX() + slider.getWidth() - sliderOffset - w;
+        lockedOffset = 0;
         
-        float volume;
+        this.musicSlider = musicSlider;
         
-        if (id.equals("music")) {
-            volume = Settings.getMusicVolume();
-        } else {
-            volume = Settings.getSFXVolume();
-        }
-        
-        setX(volume * (maxX - minX) + minX);
+        setX(minX + (maxX - minX) * (musicSlider ? Settings.getMusicVolume() : Settings.getSFXVolume()));
     }
     
     @Override
     public void update() {
-        
-        if(isHeld()){
+        if(isClicked()) {
             Point mouseLoc = Game.getMouseLocation();
+            Dimension windowSize = Game.getWindowSize();
             
-            if(mouseLoc != null){
-                double mouseX = Game.getMouseLocation().getX() / Game.getWindowSize().getWidth();
-                float grabbedX = (float)Math.min(Math.max(mouseX, minX), maxX);
-                setX(grabbedX);
+            if(mouseLoc != null) {
+                float mouseX = (float)(mouseLoc.getX() / windowSize.getWidth());
+                
+                lockedOffset = getX() - mouseX;
             }
         }
         
-        float volume = (getX() - minX) / (maxX - minX);
-        
-        if(getID().equals("music")){
-            SoundBank.setVolume(volume, true);
-        }else{
-            SoundBank.setVolume(volume, false);
+        if(isHeld()) {
+            Point mouseLoc = Game.getMouseLocation();
+            Dimension windowSize = Game.getWindowSize();
+            
+            if(mouseLoc != null) {
+                float mouseX = (float)(mouseLoc.getX() / windowSize.getWidth());
+                
+                if(mouseX + lockedOffset < minX) {
+                    mouseX = minX - lockedOffset;
+                }
+                
+                if(mouseX + lockedOffset > maxX) {
+                    mouseX = maxX - lockedOffset;
+                }
+                
+                setX(mouseX + lockedOffset);
+            }
+            
+            float volume = (getX() - minX) / (maxX - minX);
+            
+            if(musicSlider) {
+                Utils.updateVolume(volume, Settings.getSFXVolume());
+            } else {
+                Utils.updateVolume(Settings.getMusicVolume(), volume);
+            }
         }
         
-        if(isReleased()){
-            if(getID().equals("music")){
+        if(isReleased()) {
+            float volume = (getX() - minX) / (maxX - minX);
+            
+            if(musicSlider) {
+                Utils.updateVolume(volume, Settings.getSFXVolume());
                 Settings.setMusicVolume(volume);
-            }else if(getID().equals("sfx")){
+            } else {
+                Utils.updateVolume(Settings.getMusicVolume(), volume);
                 Settings.setSFXVolume(volume);
             }
+            
+            Settings.writeSettings();
         }
     }
 
