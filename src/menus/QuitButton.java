@@ -1,8 +1,8 @@
 package menus;
 
-import main.Game;
 import main.Texture;
 import main.TexturedMenuButton;
+import main.Utils;
 
 public class QuitButton extends TexturedMenuButton {
     
@@ -16,6 +16,7 @@ public class QuitButton extends TexturedMenuButton {
     public void update() {
         
         if (isReleased()) {
+            Utils.MOUSE_CLICK_SOUND.play();
             System.exit(0);
         }
     }

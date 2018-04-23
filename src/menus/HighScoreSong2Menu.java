@@ -32,7 +32,6 @@ public class HighScoreSong2Menu {
     private static Texture backClicked;
     
     public HighScoreSong2Menu(Texture backUnhovered, Texture backHovered, Texture backClicked) {
-        
         HighScoreSong2Menu.backUnhovered = backUnhovered;
         HighScoreSong2Menu.backHovered = backHovered;
         HighScoreSong2Menu.backClicked = backClicked;

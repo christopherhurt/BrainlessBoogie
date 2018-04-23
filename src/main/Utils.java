@@ -53,6 +53,8 @@ public class Utils {
     public static final float MENU_MULTIPLIER = 1f;
     public static final Sound MENU_MUSIC = genSound("menuMusic", "music/ludummenu.wav", true, MENU_MULTIPLIER);
     
+    private static int currentSong = 0;
+    
     public static void constructWinScreen() {
         Game.createScene("win");
         
@@ -126,9 +128,39 @@ public class Utils {
         Game.attachMenuToScene("lose", loseMenu);
     }
     
-    public static void startGame() {
+    public static int getCurrentSong() {
+        return currentSong;
+    }
+    
+    public static void startGame(int song) {
+        Game.clearScene("game");
+        Game.detachMenuFromScene("game");
+        
         NotesBar bar = new NotesBar("bar");
-        NotesPanel panel = new NotesPanel("panel", new Texture("textures/fret.png"), SONG_2_NOTES, SONG_2_MUSIC, bar); // TODO: Change for different songs
+        
+        currentSong = song;
+        
+        String notes = null;
+        Sound music = null;
+        
+        switch(song) {
+            case 1:
+                notes = SONG_1_NOTES;
+                music = SONG_1_MUSIC;
+                break;
+            case 2:
+                notes = SONG_2_NOTES;
+                music = SONG_2_MUSIC;
+                break;
+            case 3:
+                notes = SONG_3_NOTES;
+                music = SONG_3_MUSIC;
+                break;
+            default:
+                throw new IllegalStateException("");
+        }
+        
+        NotesPanel panel = new NotesPanel("panel", new Texture("textures/fret.png"), notes, music, bar);
         Gun gun = new Gun("gun", Utils.GUN_SHEET.getTexture(1, 0), Utils.GUN_SHEET.getTexture(2, 0));
         TexturedGameObject background = new TexturedGameObject(NotesPanel.PANEL_WIDTH, 0, 0, 0, 0, 0, 1 - NotesPanel.PANEL_WIDTH, 1, "background", new Texture("textures/backgroundStreet.png"));
         
@@ -137,8 +169,7 @@ public class Utils {
         Game.addObjectToScene("game", bar);
         Game.addObjectToScene("game", gun);
         
-        // TODO: readd when menus are added
-        // Game.setCursor(GUN_CROSSHAIR);
+        Game.setCursor(GUN_CROSSHAIR);
         Game.setCurrentScene("game");
     }
     

@@ -30,7 +30,7 @@ public class EndRestartButton extends TexturedMenuButton {
         if(isReleased()) {
             SoundBank.stopAll();
             Utils.MOUSE_CLICK_SOUND.play();
-            Utils.startGame();
+            Utils.startGame(Utils.getCurrentSong());
         }
     }
     

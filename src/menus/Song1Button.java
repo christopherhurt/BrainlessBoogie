@@ -1,8 +1,9 @@
 package menus;
 
-import main.Game;
+import main.SoundBank;
 import main.Texture;
 import main.TexturedMenuButton;
+import main.Utils;
 
 public class Song1Button extends TexturedMenuButton {
     
@@ -14,10 +15,10 @@ public class Song1Button extends TexturedMenuButton {
     
     @Override
     public void update() {
-        
         if (isReleased()) {
-            // start the game with this song
-            // Game.setCurrentScene("song1");
+            SoundBank.stopAll();
+            Utils.MOUSE_CLICK_SOUND.play();
+            Utils.startGame(1);
         }
     }
 

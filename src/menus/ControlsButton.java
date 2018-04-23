@@ -3,6 +3,7 @@ package menus;
 import main.Game;
 import main.Texture;
 import main.TexturedMenuButton;
+import main.Utils;
 
 public class ControlsButton extends TexturedMenuButton {
     
@@ -14,11 +15,10 @@ public class ControlsButton extends TexturedMenuButton {
     
     @Override
     public void update() {
-        
         if (isReleased()) {
+            Utils.MOUSE_CLICK_SOUND.play();
             Game.setCurrentScene("controls");
         }
-        
     }
 
 }

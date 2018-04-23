@@ -3,6 +3,7 @@ package menus;
 import main.Game;
 import main.Texture;
 import main.TexturedMenuButton;
+import main.Utils;
 
 public class HighScoreSong1Button extends TexturedMenuButton {
     
@@ -14,8 +15,9 @@ public class HighScoreSong1Button extends TexturedMenuButton {
     
     @Override
     public void update() {
-        
         if (isReleased()) {
+            Utils.MOUSE_CLICK_SOUND.play();
+            
             Game.setCurrentScene("high score song 1");
             Game.getMenu().getLabel("score1song1").setText("1.  " + scoreOf(Settings.getHighScoresSong1()[0]));
             Game.getMenu().getLabel("percent1song1").setText(percentOf(Settings.getHighPercentagesSong1()[0]));

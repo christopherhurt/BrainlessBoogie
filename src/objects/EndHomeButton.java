@@ -1,5 +1,6 @@
 package objects;
 
+import main.Game;
 import main.SoundBank;
 import main.Texture;
 import main.TexturedMenuButton;
@@ -28,9 +29,8 @@ public class EndHomeButton extends TexturedMenuButton {
         if(isReleased()) {
             SoundBank.stopAll();
             Utils.MOUSE_CLICK_SOUND.play();
-            // TODO: Return to home, start menu music
-            System.out.println("Returning to home screen...");
-            System.exit(0);
+            Utils.MENU_MUSIC.play();
+            Game.setCurrentScene("main menu");
         }
     }
     

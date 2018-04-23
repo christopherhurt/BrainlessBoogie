@@ -7,38 +7,38 @@ import main.MenuLabel;
 import main.Texture;
 
 public class HelpMenu {
-
-private Menu helpMenu;
-
-private static final float HOME_X = .025f;
-private static final float HOME_Y = .875f;
-private static final float HOME_HEIGHT = .1f;    
-private static final float HOME_WIDTH = HOME_HEIGHT;
-
-private static final float CONTROLS_X = .2f;
-private static final float CONTROLS_Y = .875f;
-private static final float CONTROLS_HEIGHT = .1f;    
-private static final float CONTROLS_WIDTH = .35f;
-
-private static final float GAME_INSTRUCTIONS_X = .6f;
-private static final float GAME_INSTRUCTIONS_Y = CONTROLS_Y;
-private static final float GAME_INSTRUCTIONS_HEIGHT = .1f;    
-private static final float GAME_INSTRUCTIONS_WIDTH = .35f;
-
-private static final float INSTRUCTION_LABEL_X = Game.getWindowSize().width/10 + .05f;
-private static final float INSTRUCTION_LABEL_Y = .125f;
-
-private static Texture homeUnhovered;
-private static Texture homeHovered;
-private static Texture homeClicked;
-
-private static Texture controlsUnhovered;
-private static Texture controlsHovered;
-private static Texture controlsClicked;
-
-private static Texture gameInstructionsUnhovered;
-private static Texture gameInstructionsHovered;
-private static Texture gameInstructionsClicked;
+    
+    private Menu helpMenu;
+    
+    private static final float HOME_X = .025f;
+    private static final float HOME_Y = .875f;
+    private static final float HOME_HEIGHT = .1f;    
+    private static final float HOME_WIDTH = HOME_HEIGHT;
+    
+    private static final float CONTROLS_X = .2f;
+    private static final float CONTROLS_Y = .875f;
+    private static final float CONTROLS_HEIGHT = .1f;    
+    private static final float CONTROLS_WIDTH = .35f;
+    
+    private static final float GAME_INSTRUCTIONS_X = .6f;
+    private static final float GAME_INSTRUCTIONS_Y = CONTROLS_Y;
+    private static final float GAME_INSTRUCTIONS_HEIGHT = .1f;    
+    private static final float GAME_INSTRUCTIONS_WIDTH = .35f;
+    
+    private static final float INSTRUCTION_LABEL_X = Game.getWindowSize().width/10 + .05f;
+    private static final float INSTRUCTION_LABEL_Y = .125f;
+    
+    private static Texture homeUnhovered;
+    private static Texture homeHovered;
+    private static Texture homeClicked;
+    
+    private static Texture controlsUnhovered;
+    private static Texture controlsHovered;
+    private static Texture controlsClicked;
+    
+    private static Texture gameInstructionsUnhovered;
+    private static Texture gameInstructionsHovered;
+    private static Texture gameInstructionsClicked;
     
     public HelpMenu(Texture homeUnhovered, Texture homeHovered, Texture homeClicked, 
         Texture controlsUnhovered, Texture controlsHovered, Texture controlsClicked,

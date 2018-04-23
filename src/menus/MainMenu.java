@@ -1,11 +1,8 @@
 package menus;
 
-import java.awt.Color;
 import main.Game;
 import main.Menu;
-import main.MenuButton;
 import main.Texture;
-import main.TexturedMenuButton;
 
 
 public class MainMenu {
