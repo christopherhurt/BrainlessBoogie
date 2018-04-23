@@ -64,6 +64,7 @@ public class Runner {
         Utils.constructLoseScreen();
         Game.createScene("game");
         
+        Utils.MENU_MUSIC.play();
         Game.start(1600, 1600, "Brainless Boogie", "textures/icon.png", 60, Color.blue);
         
         // TODO: TEMP

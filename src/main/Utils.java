@@ -47,7 +47,7 @@ public class Utils {
     public static final float LOSE_VOLUME_MULTIPLIER = 1f;
     public static final Sound LOSE_SOUND = genSound("lose", "sounds/usuck.wav", false, LOSE_VOLUME_MULTIPLIER);
     
-    public static final float MOUSE_CLICK_MULTIPLIER = 0.4f;
+    public static final float MOUSE_CLICK_MULTIPLIER = 1f;
     public static final Sound MOUSE_CLICK_SOUND = genSound("mouseClick", "sounds/mouseClick.wav", false, MOUSE_CLICK_MULTIPLIER);
     
     public static final float MENU_MULTIPLIER = 1f;
