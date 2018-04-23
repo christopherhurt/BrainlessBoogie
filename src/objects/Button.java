@@ -1,70 +1,57 @@
 package objects;
 
-import java.awt.Color;
-import main.ColoredGameObject;
 import main.Input;
+import main.Texture;
+import main.TexturedGameObject;
+import main.Utils;
 
-public class Button extends ColoredGameObject {
+public class Button extends TexturedGameObject {
     
-    public static final float BUTTON_SIZE = 0.03f;
+    public static final float BUTTON_SIZE = 0.04f;
+    public static final float BUTTON_Y = 0.8f;
     
-    private static final float BUTTON_Y = 0.8f;
-    private static final int NUM_HIT_TICKS = 15;
+    private static final int FLARED_TICKS = (int)(0.25f * Utils.FPS);
     
     private int keyCode;
     
-    private Color unpressedColor;
-    private Color pressedColor;
-    private Color hitColor; // TODO: Change for animation?
+    private Texture unpressedTex;
+    private Texture pressedTex;
+    private Texture flaredTex;
     
-    private boolean isHeld;
-    private boolean hit;
-    private int hitTimer;
+    private boolean flared;
+    private int flaredTimer;
     
-    public Button(float x, String id, int keyCode, Color unpressedColor, Color pressedColor, Color hitColor) {
-        super(x, BUTTON_Y, 0, 0, 0, 0, BUTTON_SIZE, BUTTON_SIZE, id, unpressedColor);
+    public Button(float x, String id, int keyCode, Texture unpressedTex, Texture pressedTex, Texture flaredTex) {
+        super(x, BUTTON_Y, 0, 0, 0, 0, BUTTON_SIZE, BUTTON_SIZE, id, unpressedTex);
         
         this.keyCode = keyCode;
-        this.unpressedColor = unpressedColor;
-        this.pressedColor = pressedColor;
-        this.hitColor = hitColor;
+        this.unpressedTex = unpressedTex;
+        this.pressedTex = pressedTex;
+        this.flaredTex = flaredTex;
         
-        isHeld = false;
-        hit = false;
-        hitTimer = 0;
+        flared = false;
+        flaredTimer = 0;
     }
     
-    public boolean isHeld() {
-        return isHeld;
-    }
-    
-    public void setHit() {
-        hit = true;
-        setColor(hitColor);
-        hitTimer = 0;
+    public void setFlared() {
+        flared = true;
+        flaredTimer = 0;
     }
     
     @Override
     public void update() {
-        isHeld = Input.isKeyDown(keyCode);
-        
-        if(hit) {
-            hitTimer++;
-        } else {
-            if(isHeld) {
-                setColor(pressedColor);
-            } else {
-                setColor(unpressedColor);
-            }
-        }
-        
-        if(hitTimer >= NUM_HIT_TICKS) {
-            hit = false;
+        if(flared) {
+            setTexture(flaredTex);
+            flaredTimer++;
             
-            if(isHeld) {
-                setColor(pressedColor);
+            if(flaredTimer >= FLARED_TICKS) {
+                flared = false;
+            }
+        } else {
+            if(Input.isKeyDown(keyCode)) {
+                setTexture(pressedTex);
             } else {
-                setColor(unpressedColor);
+                setTexture(unpressedTex);
             }
         }
     }
