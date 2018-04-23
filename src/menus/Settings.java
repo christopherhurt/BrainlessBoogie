@@ -7,10 +7,10 @@ import main.SaveFile;
 
 public class Settings {
     
-    private static final SaveFile optionsSettings = new SaveFile("/res/data/settings.zmb");
-    private static final SaveFile highScoreSong1Settings = new SaveFile("/res/data/highScoresSong1.zmb");
-    private static final SaveFile highScoreSong2Settings = new SaveFile("/res/data/highScoresSong2.zmb");
-    private static final SaveFile highScoreSong3Settings = new SaveFile("/res/data/highScoresSong3.zmb");
+    private static final SaveFile optionsSettings = new SaveFile("data/settings.zmb");
+    private static final SaveFile highScoreSong1Settings = new SaveFile("data/highScoresSong1.zmb");
+    private static final SaveFile highScoreSong2Settings = new SaveFile("data/highScoresSong2.zmb");
+    private static final SaveFile highScoreSong3Settings = new SaveFile("data/highScoresSong3.zmb");
     
     private static float musicVolume = 0;
     private static float sfxVolume = 0;
