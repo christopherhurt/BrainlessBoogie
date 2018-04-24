@@ -1,10 +1,9 @@
 package menus;
 
-import java.awt.Color;
 import main.Game;
 import main.Menu;
-import main.MenuLabel;
 import main.Texture;
+import main.TexturedGameObject;
 
 public class ControlsMenu {
     
@@ -14,19 +13,6 @@ public class ControlsMenu {
     private static final float HOME_Y = .875f;
     private static final float HOME_HEIGHT = .1f;    
     private static final float HOME_WIDTH = HOME_HEIGHT;
-    
-    private static final float CONTROLS_X = .2f;
-    private static final float CONTROLS_Y = .875f;
-    private static final float CONTROLS_HEIGHT = .1f;    
-    private static final float CONTROLS_WIDTH = .35f;
-    
-    private static final float GAME_INSTRUCTIONS_X = .6f;
-    private static final float GAME_INSTRUCTIONS_Y = CONTROLS_Y;
-    private static final float GAME_INSTRUCTIONS_HEIGHT = .1f;    
-    private static final float GAME_INSTRUCTIONS_WIDTH = .4f;
-    
-    private static final float CONTROLS_LABEL_X = Game.getWindowSize().width + .3f;
-    private static final float CONTROLS_LABEL_Y = .125f;
     
     private static Texture homeUnhovered;
     private static Texture homeHovered;
@@ -60,20 +46,69 @@ public class ControlsMenu {
         controlsMenu = new Menu("controls");
         constructMenu();
         Game.attachMenuToScene("controls", controlsMenu);
+        
+        float controlsH = 0.1f;
+        float controlsW = controlsH * 102f / 26f;
+        float controlsX = 0.5f - controlsW / 2;
+        float controlsY = 0.075f;
+        TexturedGameObject controlsBanner = new TexturedGameObject(controlsX, controlsY, 0, 0, 0, 0, controlsW, controlsH, "controlsBanner", new Texture("textures/controlsBanner.png"));
+        Game.addObjectToScene("controls", controlsBanner);
+        
+        float qwerH = 0.12f;
+        float qwerW = qwerH * 47f / 11f;
+        float qwerX = 0.055f;
+        float qwerY = 0.375f;
+        TexturedGameObject qwer = new TexturedGameObject(qwerX, qwerY, 0, 0, 0, 0, qwerW, qwerH, "qwer", new Texture("textures/qwer.png"));
+        Game.addObjectToScene("controls", qwer);
+        
+        float mouseH = 0.5f;
+        float mouseW = mouseH * 30f / 55f;
+        float mouseX = 0.68f;
+        float mouseY = 0.5f - mouseH / 2 + 0.05f;
+        TexturedGameObject mouse = new TexturedGameObject(mouseX, mouseY, 0, 0, 0, 0, mouseW, mouseH, "mouse", new Texture("textures/mouse.png"));
+        Game.addObjectToScene("controls", mouse);
+        
+        float shootH = 0.05f;
+        float shootW = shootH * 432f / 248f;
+        float shootX = 0.65f;
+        float shootY = mouseY;
+        TexturedGameObject shoot = new TexturedGameObject(shootX, shootY, 0, 0, 0, 0, shootW, shootH, "shoot", new Texture("textures/shootLabel.png"));
+        Game.addObjectToScene("controls", shoot);
+        
+        float noteH = 0.065f;
+        float noteW = noteH * 432f / 248f;
+        float note1X = qwerX + 0.002f;
+        float spaceBetween = 0.02f;
+        float noteY = 0.55f;
+        
+        TexturedGameObject note1 = new TexturedGameObject(note1X, noteY, 0, 0, 0, 0, noteW, noteH, "note1", new Texture("textures/redNoteLabel.png"));
+        TexturedGameObject note2 = new TexturedGameObject(note1X + noteW + spaceBetween, noteY, 0, 0, 0, 0, noteW, noteH, "note2", new Texture("textures/blueNoteLabel.png"));
+        TexturedGameObject note3 = new TexturedGameObject(note1X + 2 * (noteW + spaceBetween), noteY, 0, 0, 0, 0, noteW, noteH, "note3", new Texture("textures/orangeNoteLabel.png"));
+        TexturedGameObject note4 = new TexturedGameObject(note1X + 3 * (noteW + spaceBetween), noteY, 0, 0, 0, 0, noteW, noteH, "note4", new Texture("textures/greenNoteLabel.png"));
+    
+        Game.addObjectToScene("controls", note1);
+        Game.addObjectToScene("controls", note2);
+        Game.addObjectToScene("controls", note3);
+        Game.addObjectToScene("controls", note4);
     }
     
     public void constructMenu() {
-        
         HomeButton homeButton = new HomeButton(HOME_X, HOME_Y, HOME_WIDTH, HOME_HEIGHT, homeUnhovered, homeHovered, homeClicked, "home");
-        ControlsButton controlsButton = new ControlsButton(CONTROLS_X, CONTROLS_Y, CONTROLS_WIDTH, CONTROLS_HEIGHT, controlsUnhovered, controlsHovered, controlsClicked, "controls");
-        HelpButton gameInstructionsButton = new HelpButton(GAME_INSTRUCTIONS_X, GAME_INSTRUCTIONS_Y, GAME_INSTRUCTIONS_WIDTH, GAME_INSTRUCTIONS_HEIGHT, gameInstructionsUnhovered, gameInstructionsHovered, gameInstructionsClicked, "help");
-        MenuLabel controlsLabel = new MenuLabel("Controls", "Sans Serif", 1, 0.1f, Color.BLACK, CONTROLS_LABEL_X, CONTROLS_LABEL_Y, "instructions");
+        
+        float spaceBetween = 0.05f;
+        float controlsH = 0.0642f;
+        float controlsW = controlsH * 141f / 25f;
+        float controlsX = HOME_X + HOME_WIDTH + spaceBetween;
+        float controlsY = HOME_Y + HOME_HEIGHT - controlsH;
+        ControlsButton controlsButton = new ControlsButton(controlsX, controlsY, controlsW, controlsH, controlsUnhovered, controlsHovered, controlsClicked, "controls");
+        
+        float insW = controlsH * 141f / 25f;
+        float insX = controlsX + controlsW + spaceBetween;
+        HelpButton gameInstructionsButton = new HelpButton(insX, controlsY, insW, controlsH, gameInstructionsUnhovered, gameInstructionsHovered, gameInstructionsClicked, "help");
         
         controlsMenu.addButton(homeButton);
         controlsMenu.addButton(controlsButton);
         controlsMenu.addButton(gameInstructionsButton);
-        controlsMenu.addLabel(controlsLabel);
-        
     }
 
 }

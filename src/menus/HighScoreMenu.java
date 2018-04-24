@@ -3,6 +3,7 @@ package menus;
 import main.Game;
 import main.Menu;
 import main.Texture;
+import main.TexturedGameObject;
 
 public class HighScoreMenu {
     
@@ -12,15 +13,6 @@ public class HighScoreMenu {
     private static final float HOME_Y = .875f;
     private static final float HOME_HEIGHT = .1f;    
     private static final float HOME_WIDTH = HOME_HEIGHT;
-    
-    private static final float BUTTON_X = .055f;
-    private static final float BUTTON_HEIGHT = .1f;    
-    private static final float BUTTON_WIDTH =  BUTTON_HEIGHT * 115 / 25;
-
-    private static final float BUTTON_SEPARATION = .125f;
-    private static final float SONG1_BUTTON_Y = .4f - BUTTON_HEIGHT * 3 / 4; 
-    private static final float SONG2_BUTTON_Y = SONG1_BUTTON_Y + BUTTON_SEPARATION;
-    private static final float SONG3_BUTTON_Y = SONG2_BUTTON_Y + BUTTON_SEPARATION;
 
     private static Texture homeUnhovered;
     private static Texture homeHovered;
@@ -59,14 +51,26 @@ public class HighScoreMenu {
         highScoreMenu = new Menu("high score");
         constructMenu();
         Game.attachMenuToScene("high score", highScoreMenu);
+        
+        float hsH = 0.125f;
+        float hsW = hsH * 117f / 26f;
+        float hsX = 0.5f - hsW / 2;
+        float hsY = 0.073f;
+        TexturedGameObject hsBanner = new TexturedGameObject(hsX, hsY, 0, 0, 0, 0, hsW, hsH, "hsBanner", new Texture("textures/highScoreBanner.png"));
+        Game.addObjectToScene("high score", hsBanner);
     }
     
     public void constructMenu() {
+        float songHeight = 0.1f;
+        float distanceBetweenSongs = 0.05f;
+        float song1Y = 0.5f - 1.5f * songHeight - distanceBetweenSongs;
+        float songWidth = songHeight * 141f / 25f;
+        float songX = 0.5f - songWidth / 2;
         
         HomeButton homeButton = new HomeButton(HOME_X, HOME_Y, HOME_WIDTH, HOME_HEIGHT, homeUnhovered, homeHovered, homeClicked, "home");
-        HighScoreSong1Button song1 = new HighScoreSong1Button(BUTTON_X, SONG1_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, song1Unhovered, song1Hovered, song1Clicked, "song1");
-        HighScoreSong2Button song2 = new HighScoreSong2Button(BUTTON_X, SONG2_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, song2Unhovered, song2Hovered, song2Clicked, "song2");
-        HighScoreSong3Button song3 = new HighScoreSong3Button(BUTTON_X, SONG3_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, song3Unhovered, song3Hovered, song3Clicked, "song3");
+        HighScoreSong1Button song1 = new HighScoreSong1Button(songX, song1Y, songWidth, songHeight, song1Unhovered, song1Hovered, song1Clicked, "song1");
+        HighScoreSong2Button song2 = new HighScoreSong2Button(songX, song1Y + songHeight + distanceBetweenSongs, songWidth, songHeight, song2Unhovered, song2Hovered, song2Clicked, "song2");
+        HighScoreSong3Button song3 = new HighScoreSong3Button(songX, song1Y + 2 * (songHeight + distanceBetweenSongs), songWidth, songHeight, song3Unhovered, song3Hovered, song3Clicked, "song3");
         
         highScoreMenu.addButton(homeButton);
         highScoreMenu.addButton(song1);

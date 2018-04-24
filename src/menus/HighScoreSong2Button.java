@@ -19,19 +19,19 @@ public class HighScoreSong2Button extends TexturedMenuButton {
             Utils.MOUSE_CLICK_SOUND.play();
             
             Game.setCurrentScene("high score song 2");
-            Game.getMenu().getLabel("score1song2").setText("1.  " + scoreOf(Settings.getHighScoresSong2()[0]));
+            Game.getMenu().getLabel("score1song2").setText(scoreOf(Settings.getHighScoresSong2()[0]));
             Game.getMenu().getLabel("percent1song2").setText(percentOf(Settings.getHighPercentagesSong2()[0]));
             
-            Game.getMenu().getLabel("score2song2").setText("2.  " + scoreOf(Settings.getHighScoresSong2()[1]));
+            Game.getMenu().getLabel("score2song2").setText(scoreOf(Settings.getHighScoresSong2()[1]));
             Game.getMenu().getLabel("percent2song2").setText(percentOf(Settings.getHighPercentagesSong2()[1]));
             
-            Game.getMenu().getLabel("score3song2").setText("3.  " + scoreOf(Settings.getHighScoresSong2()[2]));
+            Game.getMenu().getLabel("score3song2").setText(scoreOf(Settings.getHighScoresSong2()[2]));
             Game.getMenu().getLabel("percent3song2").setText(percentOf(Settings.getHighPercentagesSong2()[2]));
             
-            Game.getMenu().getLabel("score4song2").setText("4.  " + scoreOf(Settings.getHighScoresSong2()[3]));
+            Game.getMenu().getLabel("score4song2").setText(scoreOf(Settings.getHighScoresSong2()[3]));
             Game.getMenu().getLabel("percent4song2").setText(percentOf(Settings.getHighPercentagesSong2()[3]));
             
-            Game.getMenu().getLabel("score5song2").setText("5.  " + scoreOf(Settings.getHighScoresSong2()[4]));
+            Game.getMenu().getLabel("score5song2").setText(scoreOf(Settings.getHighScoresSong2()[4]));
             Game.getMenu().getLabel("percent5song2").setText(percentOf(Settings.getHighPercentagesSong2()[4]));
         }
     }

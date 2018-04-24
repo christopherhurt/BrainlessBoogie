@@ -3,6 +3,7 @@ package menus;
 import main.Game;
 import main.Menu;
 import main.Texture;
+import main.TexturedGameObject;
 
 public class PlayMenu {
     
@@ -50,6 +51,13 @@ public class PlayMenu {
         playMenu = new Menu("play");
         constructMenu();
         Game.attachMenuToScene("play", playMenu);
+        
+        float playH = 0.125f;
+        float playW = playH * 57f / 26f;
+        float playX = 0.5f - playW / 2;
+        float playY = 0.073f;
+        TexturedGameObject playBanner = new TexturedGameObject(playX, playY, 0, 0, 0, 0, playW, playH, "playBanner", new Texture("textures/playBanner.png"));
+        Game.addObjectToScene("play", playBanner);
     }
     
     public void constructMenu() {
@@ -60,7 +68,7 @@ public class PlayMenu {
         float distanceBetweenSongs = 0.05f;
         float song1Y = 0.5f - 1.5f * songHeight - distanceBetweenSongs;
         float songWidth = songHeight * 141f / 25f;
-        float songX = 0.055f;
+        float songX = 0.5f - songWidth / 2;
         
         Song1Button song1Button = new Song1Button(songX, song1Y, songWidth, songHeight, song1Unhovered, song1Hovered, song1Clicked, "song1");
         Song2Button song2Button = new Song2Button(songX, song1Y + songHeight + distanceBetweenSongs, songWidth, songHeight, song2Unhovered, song2Hovered, song2Clicked, "song2");

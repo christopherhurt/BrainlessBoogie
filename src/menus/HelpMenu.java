@@ -1,10 +1,9 @@
 package menus;
 
-import java.awt.Color;
 import main.Game;
 import main.Menu;
-import main.MenuLabel;
 import main.Texture;
+import main.TexturedGameObject;
 
 public class HelpMenu {
     
@@ -14,19 +13,6 @@ public class HelpMenu {
     private static final float HOME_Y = .875f;
     private static final float HOME_HEIGHT = .1f;    
     private static final float HOME_WIDTH = HOME_HEIGHT;
-    
-    private static final float CONTROLS_X = .2f;
-    private static final float CONTROLS_Y = .875f;
-    private static final float CONTROLS_HEIGHT = .1f;    
-    private static final float CONTROLS_WIDTH = .35f;
-    
-    private static final float GAME_INSTRUCTIONS_X = .6f;
-    private static final float GAME_INSTRUCTIONS_Y = CONTROLS_Y;
-    private static final float GAME_INSTRUCTIONS_HEIGHT = .1f;    
-    private static final float GAME_INSTRUCTIONS_WIDTH = .35f;
-    
-    private static final float INSTRUCTION_LABEL_X = Game.getWindowSize().width/10 + .05f;
-    private static final float INSTRUCTION_LABEL_Y = .125f;
     
     private static Texture homeUnhovered;
     private static Texture homeHovered;
@@ -61,19 +47,39 @@ public class HelpMenu {
         helpMenu = new Menu("help");
         constructMenu();
         Game.attachMenuToScene("help", helpMenu);
+        
+        float insH = 0.1f;
+        float insW = insH * 145f / 26f;
+        float insX = 0.5f - insW / 2;
+        float insY = 0.075f;
+        TexturedGameObject insBanner = new TexturedGameObject(insX, insY, 0, 0, 0, 0, insW, insH, "insBanner", new Texture("textures/instructionsBanner.png"));
+        Game.addObjectToScene("help", insBanner);
+        
+        float boxH = 0.23f;
+        float boxW = boxH * 3868f / 1120f;
+        float boxX = 0.5f - boxW / 2;
+        float boxY = 0.5f - boxH / 2;
+        TexturedGameObject box = new TexturedGameObject(boxX, boxY, 0, 0, 0, 0, boxW, boxH, "box", new Texture("textures/instructionsLabel.png"));
+        Game.addObjectToScene("help", box);
     }
     
     public void constructMenu() {
-        
         HomeButton homeButton = new HomeButton(HOME_X, HOME_Y, HOME_WIDTH, HOME_HEIGHT, homeUnhovered, homeHovered, homeClicked, "home");
-        ControlsButton controlsButton = new ControlsButton(CONTROLS_X, CONTROLS_Y, CONTROLS_WIDTH, CONTROLS_HEIGHT, controlsUnhovered, controlsHovered, controlsClicked, "controls");
-        HelpButton gameInstructionsButton = new HelpButton(GAME_INSTRUCTIONS_X, GAME_INSTRUCTIONS_Y, GAME_INSTRUCTIONS_WIDTH, GAME_INSTRUCTIONS_HEIGHT, gameInstructionsUnhovered, gameInstructionsHovered, gameInstructionsClicked, "help");
-        MenuLabel gameInstructionsLabel = new MenuLabel("Game Instructions", "Sans Serif", 1, 0.1f, Color.BLACK, INSTRUCTION_LABEL_X, INSTRUCTION_LABEL_Y, "instructions");
         
+        float spaceBetween = 0.05f;
+        float controlsH = 0.0642f;
+        float controlsW = controlsH * 141f / 25f;
+        float controlsX = HOME_X + HOME_WIDTH + spaceBetween;
+        float controlsY = HOME_Y + HOME_HEIGHT - controlsH;
+        ControlsButton controlsButton = new ControlsButton(controlsX, controlsY, controlsW, controlsH, controlsUnhovered, controlsHovered, controlsClicked, "controls");
+        
+        float insW = controlsH * 141f / 25f;
+        float insX = controlsX + controlsW + spaceBetween;
+        HelpButton gameInstructionsButton = new HelpButton(insX, controlsY, insW, controlsH, gameInstructionsUnhovered, gameInstructionsHovered, gameInstructionsClicked, "help");
+                
         helpMenu.addButton(homeButton);
         helpMenu.addButton(controlsButton);
         helpMenu.addButton(gameInstructionsButton);
-        helpMenu.addLabel(gameInstructionsLabel);
     }
     
 }

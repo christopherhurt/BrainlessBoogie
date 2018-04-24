@@ -16,6 +16,7 @@ import main.SoundBank;
 import main.Texture;
 import main.TexturedGameObject;
 import main.Utils;
+import menus.Settings;
 
 public class NotesPanel extends TexturedGameObject {
     
@@ -289,6 +290,20 @@ public class NotesPanel extends TexturedGameObject {
         scoreLabel.setText(score + "");
         MenuLabel percentageLabel = winMenu.getLabel("percentageLabel");
         percentageLabel.setText(percentageHit + "%");
+        
+        switch(Utils.getCurrentSong()) {
+            case 1:
+                Settings.setHighScoreSong1(score, percentageHit);
+                break;
+            case 2:
+                Settings.setHighScoreSong2(score, percentageHit);
+                break;
+            case 3:
+                Settings.setHighScoreSong3(score, percentageHit);
+                break;
+            default:
+                throw new IllegalStateException("WTF Utils.getCurrentSong() is invalid");
+        }
         
         Utils.WIN_SOUND.play();
     }

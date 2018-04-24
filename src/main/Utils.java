@@ -23,9 +23,9 @@ public class Utils {
     public static final Sound SONG_2_MUSIC = genSound("gameMusic2", "music/ludem2song.wav", false, 1);
     public static final Sound SONG_3_MUSIC = genSound("gameMusic3", "music/ludem3song.wav", false, 1);
     
-    public static final String SONG_1_NOTES = "res/notes/ludem1.txt";
-    public static final String SONG_2_NOTES = "res/notes/ludem2.txt";
-    public static final String SONG_3_NOTES = "res/notes/ludem3.txt";
+    public static final String SONG_1_NOTES = "data/ludem1.txt";
+    public static final String SONG_2_NOTES = "data/ludem2.txt";
+    public static final String SONG_3_NOTES = "data/ludem3.txt";
     
     public static final SpriteSheet BUTTON_SHEET = new SpriteSheet("textures/buttons.png", 8, 8);
     public static final SpriteSheet ZOMBIE_SHEET = new SpriteSheet("textures/zombieshites53.png", 8, 8);

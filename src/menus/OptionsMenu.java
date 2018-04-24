@@ -3,6 +3,7 @@ package menus;
 import main.Game;
 import main.Menu;
 import main.Texture;
+import main.TexturedGameObject;
 
 public class OptionsMenu {
     
@@ -76,6 +77,32 @@ public class OptionsMenu {
         optionsMenu = new Menu("options");
         constructMenu();
         Game.attachMenuToScene("options", optionsMenu);
+        
+        float optionsH = 0.125f;
+        float optionsW = optionsH * 90f / 26f;
+        float optionsX = 0.5f - optionsW / 2;
+        float optionsY = 0.075f;
+        TexturedGameObject optionsBanner = new TexturedGameObject(optionsX, optionsY, 0, 0, 0, 0, optionsW, optionsH, "optionsBanner", new Texture("textures/optionsBanner.png"));
+        Game.addObjectToScene("options", optionsBanner);
+        
+        float sfxH = 0.075f;
+        float sfxW = sfxH * 46f / 26f;
+        float sfxY = 0.27f;
+        float distanceFromCenter = 0.221f;
+        float sfxX = 0.5f - sfxW / 2 - distanceFromCenter;
+        TexturedGameObject sfxBanner = new TexturedGameObject(sfxX, sfxY, 0, 0, 0, 0, sfxW, sfxH, "sfxBanner", new Texture("textures/sfxBanner.png"));
+        Game.addObjectToScene("options", sfxBanner);
+        
+        float musicW = sfxH * 68f / 26f;
+        float musicX = 0.5f - musicW / 2 + distanceFromCenter;
+        TexturedGameObject musicBanner = new TexturedGameObject(musicX, sfxY, 0, 0, 0, 0, musicW, sfxH, "musicBanner", new Texture("textures/musicBanner.png"));
+        Game.addObjectToScene("options", musicBanner);
+        
+        float windowW = sfxH * 128f / 26f;
+        float windowX = 0.5f - windowW / 2;
+        float windowY = 0.56f;
+        TexturedGameObject windowBanner = new TexturedGameObject(windowX, windowY, 0, 0, 0, 0, windowW, sfxH, "windowBanner", new Texture("textures/windowSizeBanner.png"));
+        Game.addObjectToScene("options", windowBanner);
     }
     
     public void constructMenu() {
@@ -84,7 +111,7 @@ public class OptionsMenu {
         
         float barHeight = 0.05f;
         float barWidth = barHeight * 100f / 15f;
-        float barY = 0.5f;
+        float barY = 0.4f;
         float distanceBetweenBars = 0.1f;
         float sfxBarX = (1 - distanceBetweenBars) / 2 - barWidth;
         float musicBarX = (1 + distanceBetweenBars) / 2;

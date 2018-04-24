@@ -55,10 +55,9 @@ public class Runner {
             new Texture("textures/controlsButtP.png"), new Texture("textures/instructionsButtU.png"), new Texture("textures/instructionsButtH.png"), 
             new Texture("textures/instructionsButtP.png"));
         new HighScoreMenu(new Texture("textures/homeButtU.png"), new Texture("textures/homeButtH.png"), 
-            new Texture("textures/homeButtP.png"), new Texture("textures/deoderant.png"), 
-            new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), 
-            new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"), new Texture("textures/deoderant.png"), 
-            new Texture("textures/dumbbell.png"), new Texture("textures/golden_fedora.png"));
+            new Texture("textures/homeButtP.png"), new Texture("textures/song1ButtU.png"), new Texture("textures/song1ButtH.png"), new Texture("textures/song1ButtP.png"),
+            new Texture("textures/song2ButtU.png"), new Texture("textures/song2ButtH.png"), new Texture("textures/song2ButtP.png"),
+            new Texture("textures/song3ButtU.png"), new Texture("textures/song3ButtH.png"), new Texture("textures/song3ButtP.png"));
         new HighScoreSong1Menu(new Texture("textures/backButtU.png"), new Texture("textures/backButtH.png"), 
             new Texture("textures/backButtP.png"));
         new HighScoreSong2Menu(new Texture("textures/backButtU.png"), new Texture("textures/backButtH.png"), 
