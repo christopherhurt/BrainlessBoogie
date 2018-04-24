@@ -49,8 +49,8 @@ public class HighScoreSong3Button extends TexturedMenuButton {
         if (percent == 0) {
             return "";
         } else {
-            return percent + "";
+            return (int)percent + "";
         }
     }
-
+    
 }
